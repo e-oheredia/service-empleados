@@ -1,0 +1,10 @@
+insert into tipo_sede(nombre) values('SUCURSAL AGENCIAS LIMA');
+insert into sede(nombre, codigo, tipo_sede_id, direccion, distrito_id) values('LIMA AGENCIAS', 'LAG', 1, 'Jr. Huancavelica', 1);
+insert into area(nombre, codigo, sede_id) values('COMERCIAL','C001',1);
+insert into tipo_puesto(nombre) values('JEFE');
+insert into puesto(nombre, tipo_puesto_id, area_id) values('JEFE COMERCIAL', 1, 1);
+insert into empleado(matricula, nombres) values('RGARCÍA', 'RAQUEL GARCÍA');
+insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(1, 1, GETDATE());
+insert into buzon(nombre, area_id, activo) values('RAQUEL GARCÍA', 1, 1);
+insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(1,1,GETDATE());
+insert into sede(nombre, codigo, tipo_sede_id, direccion, distrito_id) values('LIMA AGENCIAS 2', 'LAG2', 1, 'Jr. Huancavelica', 2);
