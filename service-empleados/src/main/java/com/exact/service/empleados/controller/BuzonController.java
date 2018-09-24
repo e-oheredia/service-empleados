@@ -30,8 +30,8 @@ public class BuzonController {
 	}
 	
 	@GetMapping()
-	public ResponseEntity<Iterable<Buzon>> listarByIds(@RequestParam ){
-		return new ResponseEntity<Iterable<Buzon>>(buzonService.listarByIds(List<Long> idsids), HttpStatus.OK);
+	public ResponseEntity<Iterable<Buzon>> listarByIds(@RequestParam List<Long> ids){
+		return new ResponseEntity<Iterable<Buzon>>(buzonService.listarByIds(ids), HttpStatus.OK);
 	}
 		
 }

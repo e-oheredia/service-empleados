@@ -35,7 +35,6 @@ public class SedeService implements ISedeService{
 				while(i < distritos.size()) {
 					if (sede.getDistritoId() == Long.valueOf(distritos.get(i).get("id").toString())) {
 						sede.setDistrito(distritos.get(i));
-						distritos.remove(i);
 						break;
 					}
 					i++;
