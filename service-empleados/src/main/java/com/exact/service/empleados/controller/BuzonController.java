@@ -29,9 +29,14 @@ public class BuzonController {
 		return new ResponseEntity<Buzon>(buzon, buzon == null ? HttpStatus.NOT_FOUND: HttpStatus.OK);
 	}
 	
-	@GetMapping()
+	@GetMapping(params="ids")
 	public ResponseEntity<Iterable<Buzon>> listarByIds(@RequestParam List<Long> ids){
 		return new ResponseEntity<Iterable<Buzon>>(buzonService.listarByIds(ids), HttpStatus.OK);
+	}
+	
+	@GetMapping()
+	public ResponseEntity<Iterable<Buzon>> listarAll() throws IOException, JSONException{
+		return new ResponseEntity<Iterable<Buzon>>(buzonService.listarAll(), HttpStatus.OK);
 	}
 		
 }

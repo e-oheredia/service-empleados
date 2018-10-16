@@ -1,5 +1,8 @@
 package com.exact.service.empleados.controller;
 
+import java.io.IOException;
+
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +25,7 @@ public class AreaController {
 	private IAreaService areaService;
 	
 	@GetMapping
-	public ResponseEntity<Iterable<Area>> listarAll() {
+	public ResponseEntity<Iterable<Area>> listarAll() throws IOException, JSONException{
 		return new ResponseEntity<Iterable<Area>>(areaService.listarAll(), HttpStatus.OK);
 	}
 	
