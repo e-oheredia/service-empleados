@@ -15,6 +15,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
 @Table(name="buzon_empleado")
@@ -34,6 +36,7 @@ public class BuzonEmpleado implements Serializable{
 	@Column(name="fecha_asociado")
 	private Date fechaAsociado;
 	@Column(name="fecha_desasociado")
+	@JsonInclude(value=Include.NON_NULL)
 	private Date fechaDesasociado;
 	@PrePersist
 	public void prePersist() {

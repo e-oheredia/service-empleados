@@ -17,7 +17,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
 @Table(name="sede")
@@ -39,6 +41,7 @@ public class Sede implements Serializable{
 	
 	private Long distritoId;
 	@Transient
+	@JsonInclude(value=Include.NON_NULL)
 	private Map<String, Object> distrito;	
 	
 	public Map<String, Object> getDistrito() {

@@ -1,6 +1,7 @@
 package com.exact.service.empleados.service.classes;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,12 @@ public class EmpleadoService implements IEmpleadoService {
 		Sede sede = puestoActual.getPuesto().getArea().getSede();
 		sede.setDistrito(distritoEdao.listarById(sede.getDistritoId()));
 		return empleado;
+	}
+	
+	@Override
+	public Iterable<Empleado> listarByMatriculas(List<String> matriculas) throws IOException, JSONException {		
+		Iterable<Empleado> empleados = empleadoDao.findByMatriculaIn(matriculas);
+		return empleados;
 	}
 
 }

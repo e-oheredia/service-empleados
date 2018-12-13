@@ -1,6 +1,7 @@
 package com.exact.service.empleados.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,12 @@ public class EmpleadoController {
 	public ResponseEntity<Empleado> listarByMatricula(@RequestParam String matricula) throws IOException, JSONException {
 			Empleado empleado = empleadoService.listarByMatricula(matricula);
 		return new ResponseEntity<Empleado>(empleado, empleado == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+	}
+	
+	@GetMapping(params= {"matriculas"})
+	public ResponseEntity<Iterable<Empleado>> listarByMatricula(@RequestParam List<String> matriculas) throws IOException, JSONException {
+		Iterable<Empleado> empleados = empleadoService.listarByMatriculas(matriculas);
+		return new ResponseEntity<Iterable<Empleado>>(empleados, empleados == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
 	}
 	
 	
