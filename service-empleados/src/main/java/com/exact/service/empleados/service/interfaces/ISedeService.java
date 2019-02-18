@@ -11,4 +11,6 @@ public interface ISedeService {
 	Iterable<Sede> listarAll() throws IOException, JSONException;
 	Sede listarById(Long id) throws IOException, JSONException;
 	Sede guardar(Sede sede) throws ClientProtocolException, IOException;
+	Sede findSedeByMatricula(String matricula) throws ClientProtocolException, IOException;
+	Iterable<Sede> listarSedesDespacho() throws ClientProtocolException, IOException;
 }

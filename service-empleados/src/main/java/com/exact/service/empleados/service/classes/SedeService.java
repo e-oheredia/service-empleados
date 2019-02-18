@@ -63,6 +63,16 @@ public class SedeService implements ISedeService{
 		}		
 		return sedeDao.save(sede);
 	}
+
+	@Override
+	public Sede findSedeByMatricula(String matricula) throws ClientProtocolException, IOException {
+		return sedeDao.findSedeByMatricula(matricula);
+	}
+
+	@Override
+	public Iterable<Sede> listarSedesDespacho() throws ClientProtocolException, IOException {
+		return sedeDao.listarSedesDespacho();
+	}
 	
 	
 	

@@ -38,12 +38,19 @@ public class Sede implements Serializable{
 	private TipoSede tipoSede;
 	private String direccion;	
 	@Column(name="distrito_id", nullable=false)
-	
 	private Long distritoId;
+	private boolean despacho;
 	@Transient
 	@JsonInclude(value=Include.NON_NULL)
 	private Map<String, Object> distrito;	
+		
 	
+	public boolean isDespacho() {
+		return despacho;
+	}
+	public void setDespacho(boolean despacho) {
+		this.despacho = despacho;
+	}
 	public Map<String, Object> getDistrito() {
 		return distrito;
 	}
