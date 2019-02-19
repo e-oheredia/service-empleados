@@ -39,4 +39,14 @@ public class SedeController{
 		return new ResponseEntity<Sede>(sedeService.guardar(sede), HttpStatus.OK);
 	}
 	
+	@GetMapping("/despacho/{matricula}")
+	public ResponseEntity<Sede> buscarSede(@PathVariable String matricula) throws ClientProtocolException, IOException{
+		return new ResponseEntity<Sede>(sedeService.findSedeByMatricula(matricula), HttpStatus.OK);
+	}
+	
+	@GetMapping("/sedesdespacho")
+	public ResponseEntity<Iterable<Sede>> listarSedesDespacho() throws ClientProtocolException, IOException{
+		return new ResponseEntity<Iterable<Sede>>(sedeService.listarSedesDespacho(), HttpStatus.OK);
+	}
+	
 }
