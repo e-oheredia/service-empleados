@@ -21,6 +21,8 @@ insert into area(nombre, codigo, sede_id) values('UTD LIMA','C012',6);
 insert into tipo_puesto(nombre) values('JEFE');
 insert into tipo_puesto(nombre) values('OPERATIVO');
 insert into tipo_puesto(nombre) values('ANALISTA');
+insert into tipo_puesto(nombre) values('SUPERVISOR');
+insert into tipo_puesto(nombre) values('AUTORIZADOR');
 insert into puesto(nombre, tipo_puesto_id, area_id) values('JEFE COMERCIAL', 1, 1);
 insert into puesto(nombre, tipo_puesto_id, area_id) values('JEFE PROYECTOS', 1, 2);
 insert into puesto(nombre, tipo_puesto_id, area_id) values('JEFE CONTABILIDAD', 1, 3);
@@ -33,8 +35,8 @@ insert into puesto(nombre, tipo_puesto_id, area_id) values('OPERATIVO UTD LMO', 
 insert into puesto(nombre, tipo_puesto_id, area_id) values('OPERATIVO UTD SIS', 2, 10);
 insert into puesto(nombre, tipo_puesto_id, area_id) values('OPERATIVO UTD STR', 2, 11);
 insert into puesto(nombre, tipo_puesto_id, area_id) values('OPERATIVO UTD LIMA', 2, 12);
-
--- OPERATIVOS UTD
+insert into puesto(nombre, tipo_puesto_id, area_id) values('SUPERVISOR UTD LMO', 4, 9);
+-- OPERATIVO UTD
 insert into empleado(matricula, nombres) values('OHEREDIA', 'ORLANDO HEREDIA');
 insert into empleado(matricula, nombres) values('CCAMPOS', 'CHRISTIAN CAMPOS');
 insert into empleado(matricula, nombres) values('RSANTOS', 'RONALD SANTOS');
@@ -44,6 +46,8 @@ insert into empleado(matricula, nombres) values('KVEGA', 'KATHERINE VEGA');
 insert into empleado(matricula, nombres) values('KMACEDO', 'KATHELEEN MACEDO');
 insert into empleado(matricula, nombres) values('KARRUE', 'KRYSTEL ARRUE');
 insert into empleado(matricula, nombres) values('MCEVALLOS', 'MEDALIT CEVALLOS');
+-- SUPERVISOR UTD
+insert into empleado(matricula, nombres) values('EROJAS', 'ERNST ROJAS');
 
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(1, 5, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(2, 6, GETDATE());
@@ -53,6 +57,7 @@ insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(9, 1,
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(10, 2, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(11, 3, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(12, 4, GETDATE());
+insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(13, 9, GETDATE());
 insert into buzon(nombre, area_id, activo) values('ORLANDO HEREDIA', 9, 1);
 insert into buzon(nombre, area_id, activo) values('CHRISTIAN CAMPOS', 10, 1);
 insert into buzon(nombre, area_id, activo) values('RONALD SANTOS', 11, 1);
@@ -61,6 +66,7 @@ insert into buzon(nombre, area_id, activo) values('KATHERINE VEGA', 1, 1);
 insert into buzon(nombre, area_id, activo) values('KATHELEEN MACEDO', 2, 1);
 insert into buzon(nombre, area_id, activo) values('KRYSTEL ARRUE', 3, 1);
 insert into buzon(nombre, area_id, activo) values('MEDALIT CEVALLOS', 4, 1);
+insert into buzon(nombre, area_id, activo) values('ERNST ROJAS', 9, 1);
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(1,1,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(2,2,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(3,3,GETDATE());
@@ -69,4 +75,4 @@ insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(5,5,GET
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(6,6,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(7,7,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(8,8,GETDATE());
-
+insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(9,9,GETDATE());
