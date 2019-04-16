@@ -18,6 +18,8 @@ insert into area(nombre, codigo, sede_id) values('UTD LMO','C009',3);
 insert into area(nombre, codigo, sede_id) values('UTD SIS','C010',4);
 insert into area(nombre, codigo, sede_id) values('UTD STR','C011',5);
 insert into area(nombre, codigo, sede_id) values('UTD LIMA','C012',6);
+insert into area(nombre, codigo, sede_id) values('BANCA DIGITAL','C013',3);
+insert into area(nombre, codigo, sede_id) values('OPERACIONES YAPE','C014',4);
 insert into tipo_puesto(nombre) values('JEFE');
 insert into tipo_puesto(nombre) values('OPERATIVO');
 insert into tipo_puesto(nombre) values('ANALISTA');
@@ -36,18 +38,23 @@ insert into puesto(nombre, tipo_puesto_id, area_id) values('OPERATIVO UTD SIS', 
 insert into puesto(nombre, tipo_puesto_id, area_id) values('OPERATIVO UTD STR', 2, 11);
 insert into puesto(nombre, tipo_puesto_id, area_id) values('OPERATIVO UTD LIMA', 2, 12);
 insert into puesto(nombre, tipo_puesto_id, area_id) values('SUPERVISOR UTD LMO', 4, 9);
+insert into puesto(nombre, tipo_puesto_id, area_id) values('JEFE BANCA DIGITAL', 1, 13);
+insert into puesto(nombre, tipo_puesto_id, area_id) values('GERENCIA YAPE', 1, 14);
 -- OPERATIVO UTD
 insert into empleado(matricula, nombres) values('OHEREDIA', 'ORLANDO HEREDIA');
 insert into empleado(matricula, nombres) values('CCAMPOS', 'CHRISTIAN CAMPOS');
 insert into empleado(matricula, nombres) values('RSANTOS', 'RONALD SANTOS');
 insert into empleado(matricula, nombres) values('CBALTAZAR', 'CESAR BALTAZAR');
--- JEFE BCP
+-- JEFE BCP USUARIO NORMAL
 insert into empleado(matricula, nombres) values('KVEGA', 'KATHERINE VEGA');
 insert into empleado(matricula, nombres) values('KMACEDO', 'KATHELEEN MACEDO');
 insert into empleado(matricula, nombres) values('KARRUE', 'KRYSTEL ARRUE');
 insert into empleado(matricula, nombres) values('MCEVALLOS', 'MEDALIT CEVALLOS');
 -- SUPERVISOR UTD
 insert into empleado(matricula, nombres) values('EROJAS', 'ERNST ROJAS');
+-- JEFE BCP USUARIO BLOQUE
+insert into empleado(matricula, nombres) values('AGOMEZ', 'AMANDA GOMEZ');
+insert into empleado(matricula, nombres) values('KSALAZAR', 'KELLY SALAZAR');
 
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(1, 5, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(2, 6, GETDATE());
@@ -58,6 +65,8 @@ insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(10, 2
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(11, 3, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(12, 4, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(13, 9, GETDATE());
+insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(14, 10, GETDATE());
+insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(15, 11, GETDATE());
 insert into buzon(nombre, area_id, activo) values('ORLANDO HEREDIA', 9, 1);
 insert into buzon(nombre, area_id, activo) values('CHRISTIAN CAMPOS', 10, 1);
 insert into buzon(nombre, area_id, activo) values('RONALD SANTOS', 11, 1);
@@ -67,6 +76,8 @@ insert into buzon(nombre, area_id, activo) values('KATHELEEN MACEDO', 2, 1);
 insert into buzon(nombre, area_id, activo) values('KRYSTEL ARRUE', 3, 1);
 insert into buzon(nombre, area_id, activo) values('MEDALIT CEVALLOS', 4, 1);
 insert into buzon(nombre, area_id, activo) values('ERNST ROJAS', 9, 1);
+insert into buzon(nombre, area_id, activo) values('AMANDA GOMEZ', 13, 1);
+insert into buzon(nombre, area_id, activo) values('KELLY SALAZAR', 14, 1);
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(1,1,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(2,2,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(3,3,GETDATE());
@@ -76,3 +87,5 @@ insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(6,6,GET
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(7,7,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(8,8,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(9,9,GETDATE());
+insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(10,10,GETDATE());
+insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(11,11,GETDATE());
