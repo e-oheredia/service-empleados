@@ -6,6 +6,7 @@ insert into sede(nombre, codigo, tipo_sede_id, direccion, distrito_id,despacho) 
 insert into sede(nombre, codigo, tipo_sede_id, direccion, distrito_id,despacho) values('SAN ISIDRO', 'SIS', 2, 'calle Las Begonias 469', 1305, 1);
 insert into sede(nombre, codigo, tipo_sede_id, direccion, distrito_id,despacho) values('SANTA RAQUEL', 'STR', 2, 'La Arboleda 431', 1277, 1);
 insert into sede(nombre, codigo, tipo_sede_id, direccion, distrito_id,despacho) values('LIMA', 'LIMA', 2, 'Jr. Lampa', 1275, 1);
+insert into sede(nombre, codigo, tipo_sede_id, direccion, distrito_id,despacho) values('CHORRILLOS', 'CHORRI', 2, 'Leonisa', 1282, 0);
 insert into area(nombre, codigo, sede_id) values('COMERCIAL','C001',3);
 insert into area(nombre, codigo, sede_id) values('PROYECTOS','C002',4);
 insert into area(nombre, codigo, sede_id) values('CONTABILIDAD','C003',5);
@@ -20,6 +21,7 @@ insert into area(nombre, codigo, sede_id) values('UTD STR','C011',5);
 insert into area(nombre, codigo, sede_id) values('UTD LIMA','C012',6);
 insert into area(nombre, codigo, sede_id) values('BANCA DIGITAL','C013',3);
 insert into area(nombre, codigo, sede_id) values('OPERACIONES YAPE','C014',4);
+insert into area(nombre, codigo, sede_id) values('GDIA','C015',7);
 insert into tipo_puesto(nombre) values('JEFE');
 insert into tipo_puesto(nombre) values('OPERATIVO');
 insert into tipo_puesto(nombre) values('ANALISTA');
@@ -40,6 +42,7 @@ insert into puesto(nombre, tipo_puesto_id, area_id) values('OPERATIVO UTD LIMA',
 insert into puesto(nombre, tipo_puesto_id, area_id) values('SUPERVISOR UTD LMO', 4, 9);
 insert into puesto(nombre, tipo_puesto_id, area_id) values('JEFE BANCA DIGITAL', 1, 13);
 insert into puesto(nombre, tipo_puesto_id, area_id) values('GERENCIA YAPE', 1, 14);
+insert into puesto(nombre, tipo_puesto_id, area_id) values('GESTION DOCUMENTAL', 5, 15);
 -- OPERATIVO UTD
 insert into empleado(matricula, nombres) values('OHEREDIA', 'ORLANDO HEREDIA');
 insert into empleado(matricula, nombres) values('CCAMPOS', 'CHRISTIAN CAMPOS');
@@ -55,6 +58,8 @@ insert into empleado(matricula, nombres) values('EROJAS', 'ERNST ROJAS');
 -- JEFE BCP USUARIO BLOQUE
 insert into empleado(matricula, nombres) values('AGOMEZ', 'AMANDA GOMEZ');
 insert into empleado(matricula, nombres) values('KSALAZAR', 'KELLY SALAZAR');
+-- ROLE GDIA
+insert into empleado(matricula, nombres) values('GVEGA', 'GIOVANNA VEGA');
 
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(1, 5, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(2, 6, GETDATE());
@@ -67,6 +72,7 @@ insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(12, 4
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(13, 9, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(14, 10, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(15, 11, GETDATE());
+insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(16, 12, GETDATE());
 insert into buzon(nombre, area_id, activo) values('ORLANDO HEREDIA', 9, 1);
 insert into buzon(nombre, area_id, activo) values('CHRISTIAN CAMPOS', 10, 1);
 insert into buzon(nombre, area_id, activo) values('RONALD SANTOS', 11, 1);
