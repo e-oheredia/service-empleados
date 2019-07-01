@@ -70,4 +70,9 @@ public class AreaService implements IAreaService{
 		return areaDao.save(area);
 	}
 
+	@Override
+	public Iterable<Area> listarByIds(Iterable<Long> ids) throws IOException, JSONException {
+		return areaDao.findAllById(ids);
+	}
+
 }
