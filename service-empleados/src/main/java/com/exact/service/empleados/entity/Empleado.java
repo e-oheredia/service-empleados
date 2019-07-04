@@ -1,6 +1,12 @@
 package com.exact.service.empleados.entity;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -12,28 +18,66 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
+import com.exact.service.empleados.utils.Encryption;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "empleado")
 public class Empleado implements Serializable {
 
+	/*@Autowired
+	@Transient
+	private Encryption encryption;*/
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "empleado_id")
 	private Long id;
-	@Column(unique = true, nullable = false)
+	
+	@Transient
 	private String matricula;
-	@Column(nullable = false, unique = true)
+	
+	@Transient
 	private String nombres;
+	
+	@Column(name="nombres",nullable = false, unique = true)	
+	private String nombresencryptada;
+
+	@Column(name="matricula",unique = true, nullable = false)
+	private String matriculaencryptada;
+	
+
 
 	public String getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(String matricula) {
+	public void setMatricula(String matricula) throws IOException {
 		this.matricula = matricula;
+		//this.matriculaencryptada=encryption.encrypt(matricula);		
+	}
+
+	public String getMatriculaencryptada() throws UnsupportedEncodingException {
+		return matriculaencryptada;
+	}
+
+	public void setMatriculaencryptada(String matriculaencryptada) throws IOException {
+		this.matriculaencryptada = matriculaencryptada;
+		///this.matricula=encryption.decrypt(matriculaencryptada);		
+	}
+	
+	public String getNombresencryptada() {
+		return nombresencryptada;
+	}
+
+	public void setNombresencryptada(String nombresencryptada) throws IOException {		
+		this.nombresencryptada = nombresencryptada;
+		//this.nombres=encryption.decrypt(nombresencryptada);			
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empleado", orphanRemoval = true)
@@ -63,8 +107,9 @@ public class Empleado implements Serializable {
 		return nombres;
 	}
 
-	public void setNombres(String nombres) {
+	public void setNombres(String nombres) throws IOException {
 		this.nombres = nombres;
+		//this.matriculaencryptada=encryption.encrypt(nombres);		
 	}
 
 	public Set<PuestoEmpleado> getPuestos() {

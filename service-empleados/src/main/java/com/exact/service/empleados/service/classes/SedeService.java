@@ -14,6 +14,7 @@ import com.exact.service.empleados.dao.ISedeDao;
 import com.exact.service.empleados.edao.IDistritoEdao;
 import com.exact.service.empleados.entity.Sede;
 import com.exact.service.empleados.service.interfaces.ISedeService;
+import com.exact.service.empleados.utils.Encryption;
 
 @Service
 public class SedeService implements ISedeService{
@@ -23,6 +24,10 @@ public class SedeService implements ISedeService{
 	
 	@Autowired
 	public IDistritoEdao distritoEdao;
+	
+	@Autowired
+	private Encryption encryption;
+
 	
 	@Override
 	public Iterable<Sede> listarAll() throws IOException, JSONException{
@@ -66,7 +71,7 @@ public class SedeService implements ISedeService{
 
 	@Override
 	public Sede findSedeByMatricula(String matricula) throws ClientProtocolException, IOException {
-		return sedeDao.findSedeByMatricula(matricula);
+		return sedeDao.findSedeByMatricula(encryption.encrypt(matricula));
 	}
 
 	@Override

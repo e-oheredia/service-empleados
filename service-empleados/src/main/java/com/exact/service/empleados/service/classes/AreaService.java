@@ -59,6 +59,8 @@ public class AreaService implements IAreaService{
 		
 		return areaList;
 	}
+	
+	
 
 	@Override
 	public Area listarById(Long id) {

@@ -12,7 +12,7 @@ public interface ISedeDao extends CrudRepository<Sede, Long> {
 	
 	@Query("FROM Sede s WHERE s IN (SELECT a.sede FROM Area a WHERE "
 			+ "a IN (SELECT p.area FROM Puesto p WHERE p IN (SELECT pe.puesto FROM PuestoEmpleado pe WHERE pe.empleado IN (SELECT "
-			+ "e FROM Empleado e WHERE e.matricula=?1))))")
+			+ "e FROM Empleado e WHERE e.matriculaencryptada=?1))))")
 	public Sede findSedeByMatricula(String matricula);
 	
 	@Query("FROM Sede s WHERE s.despacho=1")

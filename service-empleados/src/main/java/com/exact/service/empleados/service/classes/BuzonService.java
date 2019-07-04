@@ -14,8 +14,10 @@ import org.springframework.stereotype.Service;
 import com.exact.service.empleados.dao.IBuzonDao;
 import com.exact.service.empleados.edao.IDistritoEdao;
 import com.exact.service.empleados.entity.Buzon;
+import com.exact.service.empleados.entity.Empleado;
 import com.exact.service.empleados.entity.Sede;
 import com.exact.service.empleados.service.interfaces.IBuzonService;
+import com.exact.service.empleados.utils.Encryption;
 
 @Service
 public class BuzonService implements IBuzonService {
@@ -26,16 +28,24 @@ public class BuzonService implements IBuzonService {
 	@Autowired
 	IDistritoEdao distritoEdao;
 	
+	@Autowired
+	Encryption encryp;
+	
 	@Override
 	public Buzon listarById(Long id) throws IOException, JSONException {
 		Buzon buzon = buzonDao.findById(id).orElse(null);
+		desencryptarBuzon(buzon);
 		Sede sede = buzon.getArea().getSede();
 		sede.setDistrito(distritoEdao.listarById(sede.getDistritoId()));
 		return buzon;
 	}
 
 	@Override
-	public Iterable<Buzon> listarByIds(Iterable<Long> ids) {
+	public Iterable<Buzon> listarByIds(Iterable<Long> ids) throws IOException {
+		Iterable<Buzon> buzones = buzonDao.findAllById(ids);
+		for(Buzon buzon : buzones ) {
+			desencryptarBuzon(buzon);
+		}
 		return buzonDao.findAllById(ids);
 	}
 
@@ -49,6 +59,7 @@ public class BuzonService implements IBuzonService {
 		List<Long> distritosIds = new ArrayList();
 		
 		for(Buzon buzon : buzonList) {
+			desencryptarBuzon(buzon);
 			distritosIds.add(buzon.getArea().getSede().getDistritoId());
 		}
 		
@@ -70,10 +81,16 @@ public class BuzonService implements IBuzonService {
 			
 		}
 		
-		return buzonList;
-		
-		
+		return buzonList;		
 		
 	}
+	
+	public  void encryptarBuzon(Buzon buzon) throws IOException {
+		buzon.setNombresencryptada(encryp.encrypt(buzon.getNombre()));	
+	}
+	
+	public void desencryptarBuzon(Buzon buzon) throws IOException {
+		buzon.setNombre(encryp.decrypt(buzon.getNombresencryptada()));	
+	}	
 
 }

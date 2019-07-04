@@ -1,6 +1,7 @@
 package com.exact.service.empleados.service.classes;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
@@ -13,6 +14,7 @@ import com.exact.service.empleados.entity.Empleado;
 import com.exact.service.empleados.entity.PuestoEmpleado;
 import com.exact.service.empleados.entity.Sede;
 import com.exact.service.empleados.service.interfaces.IEmpleadoService;
+import com.exact.service.empleados.utils.Encryption;
 
 @Service
 public class EmpleadoService implements IEmpleadoService {
@@ -23,14 +25,27 @@ public class EmpleadoService implements IEmpleadoService {
 	@Autowired
 	private IDistritoEdao distritoEdao;
 	
+	@Autowired
+	private Encryption encryption;
+	
 	@Override
-	public Iterable<Empleado> listarAll() {
-		return empleadoDao.findAll();
+	public Iterable<Empleado> listarAll() throws IOException {
+		Iterable<Empleado> empleados = empleadoDao.findAll();
+		
+		for(Empleado empleado : empleados) {
+			desencryptarEmpleado(empleado);
+			//String prueba0=empleado.getMatriculaencryptada();
+//			String prueba = Encryption.decrypt(empleado.getMatriculaencryptada());
+//			empleado.setMatricula(Encryption.decrypt(empleado.getMatriculaencryptada()));
+//			empleado.setNombres(Encryption.decrypt(empleado.getNombresencryptada()));
+		}
+		return empleados;
 	}
 
 	@Override
 	public Empleado listarById(Long id) throws IOException, JSONException {
 		Empleado empleado = empleadoDao.findById(id).orElse(null);
+		desencryptarEmpleado(empleado);
 		PuestoEmpleado puestoActual = empleado.getPuestoActual();
 		if (puestoActual == null) {
 			return null;
@@ -41,13 +56,15 @@ public class EmpleadoService implements IEmpleadoService {
 	}
 
 	@Override
-	public Empleado guardar(Empleado empleado) {
+	public Empleado guardar(Empleado empleado) throws IOException {
+		encryptarEmpleado(empleado);
 		return empleadoDao.save(empleado);
 	}
 
 	@Override
-	public Empleado listarByMatricula(String matricula) throws IOException, JSONException {		
-		Empleado empleado = empleadoDao.findByMatricula(matricula);
+	public Empleado listarByMatricula(String matricula) throws IOException, JSONException { 
+		Empleado empleado = empleadoDao.findByMatriculaencryptada(encryption.encrypt(matricula));
+		desencryptarEmpleado(empleado);
 		PuestoEmpleado puestoActual = empleado.getPuestoActual();
 		if (puestoActual == null) {
 			return null;
@@ -58,9 +75,27 @@ public class EmpleadoService implements IEmpleadoService {
 	}
 	
 	@Override
-	public Iterable<Empleado> listarByMatriculas(List<String> matriculas) throws IOException, JSONException {		
-		Iterable<Empleado> empleados = empleadoDao.findByMatriculaIn(matriculas);
+	public Iterable<Empleado> listarByMatriculas(List<String> matriculas) throws IOException, JSONException {
+		List<String> MatriculasEncriptadas = new ArrayList<>();
+		for(String matricula : matriculas) {
+			MatriculasEncriptadas.add(encryption.encrypt(matricula));
+		}
+		Iterable<Empleado> empleados = empleadoDao.findAllByMatriculaencryptadaIn(MatriculasEncriptadas);
+		for(Empleado empleado : empleados) {
+			desencryptarEmpleado(empleado);
+		}
 		return empleados;
 	}
+	
 
+	public  void encryptarEmpleado(Empleado empleado) throws IOException {
+		empleado.setNombresencryptada( encryption.encrypt(empleado.getNombres()));
+		empleado.setMatriculaencryptada(encryption.encrypt(empleado.getMatricula()));
+	}
+	
+	public void desencryptarEmpleado(Empleado empleado) throws IOException {
+		empleado.setNombres(encryption.decrypt(empleado.getNombresencryptada()));
+		empleado.setMatricula(encryption.decrypt(empleado.getMatriculaencryptada()));
+	}	
+	
 }
