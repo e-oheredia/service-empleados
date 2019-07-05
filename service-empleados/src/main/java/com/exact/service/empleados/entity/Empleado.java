@@ -42,6 +42,7 @@ public class Empleado implements Serializable {
 	@Transient
 	private String matricula;
 	
+	
 	@Transient
 	private String nombres;
 	
