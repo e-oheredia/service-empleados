@@ -1,6 +1,12 @@
 package com.exact.service.empleados.entity;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,21 +17,57 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
+import com.exact.service.empleados.utils.Encryption;
+
+
 
 @Entity
 @Table(name="buzon")
 public class Buzon implements Serializable{
 	
+
+
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="buzon_id")
 	private Long id;
-	@Column(nullable=false, unique=true)
+	
+	
+	@Transient
 	private String nombre;
 	
+	/*@Autowired
+	@Transient
+	private Encryption encryption;*/
+	
+	@Column(name="nombre",nullable=false, unique=true)
+	private String nombresencryptada;
+	
+	public String getNombresencryptada() {
+		return nombresencryptada;
+	}
+
+
+
+	public void setNombresencryptada(String nombresencryptada) throws IOException {
+		this.nombresencryptada = nombresencryptada;
+		//this.nombre=encryption.decrypt(nombresencryptada);	
+	}
+
 	@ManyToOne(fetch=FetchType.EAGER, optional=false)
 	@JoinColumn(name="area_id")
 	private Area area;
+	
+
+	public Buzon() {
+
+	}
 	
 	public Area getArea() {
 		return area;
@@ -41,11 +83,13 @@ public class Buzon implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNombre() {
+	public String getNombre() throws IOException {
+		//this.nombre = encryption.decrypt(nombresencryptada);
 		return nombre;
 	}
-	public void setNombre(String nombre) {
+	public void setNombre(String nombre) throws IOException {
 		this.nombre = nombre;
+		//this.nombresencryptada=encryption.encrypt(nombre);
 	}
 	public boolean isActivo() {
 		return activo;
@@ -54,8 +98,6 @@ public class Buzon implements Serializable{
 		this.activo = activo;
 	}
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 }

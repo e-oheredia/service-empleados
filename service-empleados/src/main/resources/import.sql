@@ -44,22 +44,22 @@ insert into puesto(nombre, tipo_puesto_id, area_id) values('JEFE BANCA DIGITAL',
 insert into puesto(nombre, tipo_puesto_id, area_id) values('GERENCIA YAPE', 1, 14);
 insert into puesto(nombre, tipo_puesto_id, area_id) values('GESTION DOCUMENTAL', 5, 15);
 -- OPERATIVO UTD
-insert into empleado(matricula, nombres) values('OHEREDIA', 'ORLANDO HEREDIA');
-insert into empleado(matricula, nombres) values('CCAMPOS', 'CHRISTIAN CAMPOS');
-insert into empleado(matricula, nombres) values('RSANTOS', 'RONALD SANTOS');
-insert into empleado(matricula, nombres) values('CBALTAZAR', 'CESAR BALTAZAR');
+insert into empleado(matricula, nombres) values('a6D7tqHY1Pz3211gkIxXTg==', 'BvCGFrivttsaW1OjClhdgQ==');
+insert into empleado(matricula, nombres) values('59avJA+yQd5AF0RP+iFkDg==', 'ynrsKMWBbiaT66NBbHEzSQWLJyM9elyn6SY3/heHStM=');
+insert into empleado(matricula, nombres) values('Gaqx/ceIbeo63thBgztUOg==', '/YyoF89TLhBzoRTGjRLG7w==');
+insert into empleado(matricula, nombres) values('hYAitdvDbYND+jLu/EDAqw==', 'kOeKoM9EgbMHvAB96CmEXg==');
 -- JEFE BCP USUARIO NORMAL
-insert into empleado(matricula, nombres) values('KVEGA', 'KATHERINE VEGA');
-insert into empleado(matricula, nombres) values('KMACEDO', 'KATHELEEN MACEDO');
-insert into empleado(matricula, nombres) values('KARRUE', 'KRYSTEL ARRUE');
-insert into empleado(matricula, nombres) values('MCEVALLOS', 'MEDALIT CEVALLOS');
+insert into empleado(matricula, nombres) values('cEndjLf+JMJ6bMvcFNOrNg==', 'JwcW64YyL0R4+hNPw2CihQ==');
+insert into empleado(matricula, nombres) values('ipXXqCaAUOY9FkyzmE8i7Q==', '4WcsjM/EvbuGKhG93j52A9LZPWscPrq4nM/5DwOsyFQ=');
+insert into empleado(matricula, nombres) values('T8/QpOHsnxogxrCSEHgznQ==', 'h4j6606dG+ZE7N91MlmKbA==');
+insert into empleado(matricula, nombres) values('sj/PInPyTdC38HOB3gSV2w==', 'oil2VQA8hTcmDPBg+R1f2+PrkrhiSEAPsIzBMaYdWDY=');
 -- SUPERVISOR UTD
-insert into empleado(matricula, nombres) values('EROJAS', 'ERNST ROJAS');
+insert into empleado(matricula, nombres) values('OikCd/xdeGLjhahfDiAAWg==', '+PvQaYUWRSdI6ECijqvvjQ==');
 -- JEFE BCP USUARIO BLOQUE
-insert into empleado(matricula, nombres) values('AGOMEZ', 'AMANDA GOMEZ');
-insert into empleado(matricula, nombres) values('KSALAZAR', 'KELLY SALAZAR');
+insert into empleado(matricula, nombres) values('xBZ7gwiEUGjqGc27Bb4w8A==', '2l1YX49hsuzrWXO77o8xig==');
+insert into empleado(matricula, nombres) values('D/ZNa+GNAD8iDy3YV9W2nw==', 'Umbu4Y7PkXou9W6PGxecnA==');
 -- ROLE GDIA
-insert into empleado(matricula, nombres) values('GVEGA', 'GIOVANNA VEGA');
+insert into empleado(matricula, nombres) values('e69Dhk6185WvSeXe3LHdJA==', 'jXble8PX4PaCZouCRD97yQ==');
 
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(1, 5, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(2, 6, GETDATE());
@@ -73,17 +73,17 @@ insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(13, 9
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(14, 10, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(15, 11, GETDATE());
 insert into puesto_empleado(puesto_id, empleado_id, fecha_asociado) values(16, 12, GETDATE());
-insert into buzon(nombre, area_id, activo) values('ORLANDO HEREDIA', 9, 1);
-insert into buzon(nombre, area_id, activo) values('CHRISTIAN CAMPOS', 10, 1);
-insert into buzon(nombre, area_id, activo) values('RONALD SANTOS', 11, 1);
-insert into buzon(nombre, area_id, activo) values('CESAR BALTAZAR', 12, 1);
-insert into buzon(nombre, area_id, activo) values('KATHERINE VEGA', 1, 1);
-insert into buzon(nombre, area_id, activo) values('KATHELEEN MACEDO', 2, 1);
-insert into buzon(nombre, area_id, activo) values('KRYSTEL ARRUE', 3, 1);
-insert into buzon(nombre, area_id, activo) values('MEDALIT CEVALLOS', 4, 1);
-insert into buzon(nombre, area_id, activo) values('ERNST ROJAS', 9, 1);
-insert into buzon(nombre, area_id, activo) values('AMANDA GOMEZ', 13, 1);
-insert into buzon(nombre, area_id, activo) values('KELLY SALAZAR', 14, 1);
+insert into buzon(nombre, area_id, activo) values('BvCGFrivttsaW1OjClhdgQ==', 9, 1);
+insert into buzon(nombre, area_id, activo) values('ynrsKMWBbiaT66NBbHEzSQWLJyM9elyn6SY3/heHStM=', 10, 1);
+insert into buzon(nombre, area_id, activo) values('/YyoF89TLhBzoRTGjRLG7w==', 11, 1);
+insert into buzon(nombre, area_id, activo) values('kOeKoM9EgbMHvAB96CmEXg==', 12, 1);
+insert into buzon(nombre, area_id, activo) values('JwcW64YyL0R4+hNPw2CihQ==', 1, 1);
+insert into buzon(nombre, area_id, activo) values('4WcsjM/EvbuGKhG93j52A9LZPWscPrq4nM/5DwOsyFQ=', 2, 1);
+insert into buzon(nombre, area_id, activo) values('h4j6606dG+ZE7N91MlmKbA==', 3, 1);
+insert into buzon(nombre, area_id, activo) values('oil2VQA8hTcmDPBg+R1f2+PrkrhiSEAPsIzBMaYdWDY=', 4, 1);
+insert into buzon(nombre, area_id, activo) values('+PvQaYUWRSdI6ECijqvvjQ==', 9, 1);
+insert into buzon(nombre, area_id, activo) values('2l1YX49hsuzrWXO77o8xig==', 13, 1);
+insert into buzon(nombre, area_id, activo) values('Umbu4Y7PkXou9W6PGxecnA==', 14, 1);
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(1,1,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(2,2,GETDATE());
 insert into buzon_empleado(buzon_id, empleado_id, fecha_asociado) values(3,3,GETDATE());

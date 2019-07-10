@@ -8,6 +8,6 @@ import com.exact.service.empleados.entity.Buzon;
 
 public interface IBuzonService {
 	Buzon listarById(Long id) throws IOException, JSONException;
-	Iterable<Buzon> listarByIds(Iterable<Long> ids);
+	Iterable<Buzon> listarByIds(Iterable<Long> ids) throws IOException;
 	Iterable<Buzon> listarAll() throws IOException, JSONException;
 }
