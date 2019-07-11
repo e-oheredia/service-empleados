@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.exact.service.empleados.dao.IEmpleadoDao;
 import com.exact.service.empleados.edao.IDistritoEdao;
+import com.exact.service.empleados.entity.Buzon;
+import com.exact.service.empleados.entity.BuzonEmpleado;
 import com.exact.service.empleados.entity.Empleado;
 import com.exact.service.empleados.entity.PuestoEmpleado;
 import com.exact.service.empleados.entity.Sede;
@@ -46,6 +48,7 @@ public class EmpleadoService implements IEmpleadoService {
 	public Empleado listarById(Long id) throws IOException, JSONException {
 		Empleado empleado = empleadoDao.findById(id).orElse(null);
 		desencryptarEmpleado(empleado);
+		
 		PuestoEmpleado puestoActual = empleado.getPuestoActual();
 		if (puestoActual == null) {
 			return null;
@@ -66,6 +69,7 @@ public class EmpleadoService implements IEmpleadoService {
 		String matri = encryption.encrypt(matricula);
 		Empleado empleado = empleadoDao.findByMatriculaencryptada(matri);
 		desencryptarEmpleado(empleado);
+		desencryptarBuzonEmpleado(empleado);
 		PuestoEmpleado puestoActual = empleado.getPuestoActual();
 		if (puestoActual == null) {
 			return null;
@@ -97,6 +101,13 @@ public class EmpleadoService implements IEmpleadoService {
 	public void desencryptarEmpleado(Empleado empleado) throws IOException {
 		empleado.setNombres(encryption.decrypt(empleado.getNombresencryptada()));
 		empleado.setMatricula(encryption.decrypt(empleado.getMatriculaencryptada()));
-	}	
+	}
+	
+	public void desencryptarBuzonEmpleado(Empleado empleado) throws IOException {
+		for(BuzonEmpleado buzonemple : empleado.getBuzones()) {
+			Buzon buzon = buzonemple.getBuzon();
+			buzon.setNombre(encryption.decrypt(buzon.getNombresencryptada()));
+		}
+	}
 	
 }
