@@ -24,7 +24,7 @@ public class EmpleadoController {
 	
 	@GetMapping
 	public ResponseEntity<Empleado> listarByMatricula(@RequestParam String matricula) throws IOException, JSONException {
-			Empleado empleado = empleadoService.listarByMatricula(matricula);
+			Empleado empleado = empleadoService.listarByMatricula(matricula.toUpperCase());
 		return new ResponseEntity<Empleado>(empleado, empleado == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
 	}
 	
