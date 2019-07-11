@@ -11,7 +11,7 @@ import com.exact.service.empleados.entity.Empleado;
 @Repository
 public interface IEmpleadoDao extends CrudRepository<Empleado, Long> {
 	
-	//@Query("FROM Empleado s WHERE s.matriculaencryptada=?1")
+	@Query("FROM Empleado s WHERE s.matriculaencryptada=?1")
 	public Empleado findByMatriculaencryptada(String matricula);
 	
 	public Iterable<Empleado> findAllByMatriculaencryptadaIn(List<String> matricula);

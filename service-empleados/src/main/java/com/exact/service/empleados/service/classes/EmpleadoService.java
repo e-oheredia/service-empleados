@@ -62,8 +62,9 @@ public class EmpleadoService implements IEmpleadoService {
 	}
 
 	@Override
-	public Empleado listarByMatricula(String matricula) throws IOException, JSONException { 
-		Empleado empleado = empleadoDao.findByMatriculaencryptada(encryption.encrypt(matricula));
+	public Empleado listarByMatricula(String matricula) throws IOException, JSONException {
+		String matri = encryption.encrypt(matricula);
+		Empleado empleado = empleadoDao.findByMatriculaencryptada(matri);
 		desencryptarEmpleado(empleado);
 		PuestoEmpleado puestoActual = empleado.getPuestoActual();
 		if (puestoActual == null) {
