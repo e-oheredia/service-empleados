@@ -46,7 +46,7 @@ public class BuzonService implements IBuzonService {
 		for(Buzon buzon : buzones ) {
 			desencryptarBuzon(buzon);
 		}
-		return buzonDao.findAllById(ids);
+		return buzones;
 	}
 
 	@Override
