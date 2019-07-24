@@ -1,12 +1,8 @@
 package com.exact.service.empleados.entity;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,10 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-
-import com.exact.service.empleados.utils.Encryption;
 
 
 

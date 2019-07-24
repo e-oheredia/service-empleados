@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exact.service.empleados.entity.Area;
-import com.exact.service.empleados.entity.Buzon;
 import com.exact.service.empleados.service.interfaces.IAreaService;
 
 @RestController
