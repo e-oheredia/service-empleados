@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import com.exact.service.empleados.dao.IAreaDao;
 import com.exact.service.empleados.edao.IDistritoEdao;
 import com.exact.service.empleados.entity.Area;
-import com.exact.service.empleados.entity.Buzon;
 import com.exact.service.empleados.service.interfaces.IAreaService;
 
 @Service

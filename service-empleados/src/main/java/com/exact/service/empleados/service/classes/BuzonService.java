@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import com.exact.service.empleados.dao.IBuzonDao;
 import com.exact.service.empleados.edao.IDistritoEdao;
 import com.exact.service.empleados.entity.Buzon;
-import com.exact.service.empleados.entity.Empleado;
 import com.exact.service.empleados.entity.Sede;
 import com.exact.service.empleados.service.interfaces.IBuzonService;
 import com.exact.service.empleados.utils.Encryption;
